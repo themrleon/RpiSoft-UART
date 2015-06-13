@@ -90,7 +90,7 @@ The driver have a 256 bytes RX buffer. This mean you can receive up to 256 bytes
 ### Understanding the TX buffer
 The driver have a 256 bytes TX buffer. This mean you can send up to 256 bytes at once and they will be stored and transmitted until the last byte, clearing the buffer automatically. If more bytes than the buffer capacity is written, the buffer will clear and start store again. Any write operation at 'data' entry, will start the transmission (Ex: `echo`). The buffer have only effect without the use of a software like `minicom` (because transmit each byte separately, using just one byte of the TX buffer at time).
 
-Remember, this is a <b>software</b>-based UART, subject to preemption, not a piece of <b>dedicated hardware</b>. Details, limitations and a user-space version can be found <a href="http://themrleon.github.io/2014/12/08/softuart/">HERE</a>.
+Remember, this is a <b>software</b>-based UART, subject to preemption, not a piece of <b>dedicated hardware</b>. Details, limitations and a user-space version can be found <a href="http://www.l3oc.com/2015/05/software-based-uart.html">HERE</a>.
 
 ## License
 GPLv2 License, details <a href="https://github.com/themrleon/RpiSoft-UART/blob/master/LICENSE">HERE</a>.
