@@ -283,11 +283,11 @@ static ssize_t get_baudrate_callback(struct device* dev, struct device_attribute
 }
 
 //--------------------------------------------------------------------------------------
-static DEVICE_ATTR(gpio_tx, S_IWUSR | S_IWGRP | S_IWOTH | S_IRUGO, get_gpio_tx_callback, set_gpio_tx_callback);
-static DEVICE_ATTR(gpio_rx, S_IWUSR | S_IWGRP | S_IWOTH | S_IRUGO, get_gpio_rx_callback, set_gpio_rx_callback);
-static DEVICE_ATTR(data, S_IWUSR | S_IWGRP | S_IWOTH | S_IRUGO, get_data_callback, set_data_callback);
-static DEVICE_ATTR(loopback, S_IWUSR | S_IWGRP | S_IWOTH | S_IRUGO, get_loopback_callback, set_loopback_callback);
-static DEVICE_ATTR(baudrate, S_IWUSR | S_IWGRP | S_IWOTH | S_IRUGO, get_baudrate_callback, set_baudrate_callback);
+static DEVICE_ATTR(gpio_tx, 0644, get_gpio_tx_callback, set_gpio_tx_callback);
+static DEVICE_ATTR(gpio_rx, 0644, get_gpio_rx_callback, set_gpio_rx_callback);
+static DEVICE_ATTR(data, 0644, get_data_callback, set_data_callback);
+static DEVICE_ATTR(loopback, 0644, get_loopback_callback, set_loopback_callback);
+static DEVICE_ATTR(baudrate, 0644, get_baudrate_callback, set_baudrate_callback);
 
 static struct class *pDEVICE_CLASS;
 static struct device *pDEVICE;
