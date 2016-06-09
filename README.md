@@ -95,3 +95,5 @@ Remember, this is a <b>software</b>-based UART, subject to preemption, not a pie
 ## License
 GPLv2 License, details <a href="https://github.com/themrleon/RpiSoft-UART/blob/master/LICENSE">HERE</a>.
 
+## Updated (june 2016)
+Tag 1.0 released and a pull request was accept on the Master branch, seems to be that the new raspberry pi toolchain can't understand some of the old symbols, so they were hardcoded
