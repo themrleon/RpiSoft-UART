@@ -18,7 +18,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 */
 
 #include <asm/io.h>
-#include <mach/platform.h>
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/timer.h>
@@ -27,6 +26,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <linux/hrtimer.h>
 #include <linux/sched.h>
 #include <linux/string.h>
+
+/* comment this out for building for a RPi 1 */
+#define RASPBERRY_PI2_OR_PI3
+
+
+#define IO_ADDRESS(x)		(((x) & 0x00ffffff) + (((x) >> 4) & 0x0f000000) + 0xf0000000)
+#define __io_address(n)		IOMEM(IO_ADDRESS(n))
+#ifdef RASPBERRY_PI2_OR_PI3
+  #define BCM2708_PERI_BASE	0x3F000000
+#else
+  #define BCM2708_PERI_BASE	0x20000000
+#endif
+#define GPIO_BASE		(BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
 
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Leonardo Ciocari");
@@ -268,7 +280,7 @@ static ssize_t set_baudrate_callback(struct device* dev, struct device_attribute
 	if (kstrtol(buf, 10, &baudrate) < 0)
 		return -EINVAL;
 		
-	if (baudrate <= 1200 && baudrate >= 19200)	//Lock utopia values ;)
+	if (baudrate < 1200 || baudrate > 19200)	//Lock utopia values ;)
 		return -EINVAL;
 	
 	BAUDRATE=baudrate;
@@ -296,8 +308,8 @@ static struct device *pDEVICE;
 static int __init ModuleInit(void)
 {
 	int result;
-	
-	pGPIO_REGISTER = (struct GPIO_REGISTERS *) __io_address(0x20200000);
+
+	pGPIO_REGISTER = (struct GPIO_REGISTERS *) __io_address(GPIO_BASE);
 	GPIOFunction(GPIO_TX, 0b001);	//GPIO as output
 	GPIOFunction(GPIO_RX, 0b000);	//GPIO as input
 	
