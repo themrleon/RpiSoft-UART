@@ -96,4 +96,7 @@ Remember, this is a <b>software</b>-based UART, subject to preemption, not a pie
 GPLv2 License, details <a href="https://github.com/themrleon/RpiSoft-UART/blob/master/LICENSE">HERE</a>.
 
 ## Updated (june 2016)
-Tag 1.0 released and a pull request was accept on the Master branch, seems to be that the new raspberry pi toolchain can't understand some of the old symbols, so they were hardcoded
+Tag 1.0 released and a pull request was accept on the Master branch, seems to be that the new raspberry pi toolchain can't understand some of the old symbols, so they were hardcoded.
+
+## Updated (july 2017)
+Accepted pull request that adds support for the rpi version 2 and 3, however, I can't test any pull requests because I haven't the rpi hardware anymore, so if you are having problems with the master branch version (which contains all the pull requests), try the tag 1.0 that was fully developed and tested by me, using the rpi model B. A BIG thanks for all the contributors that keep updating the driver with the newer rpi models =]
