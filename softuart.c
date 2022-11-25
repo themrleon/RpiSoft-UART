@@ -200,13 +200,13 @@ static ssize_t set_gpio_rx_callback(struct device* dev, struct device_attribute*
 }
 
 //--------------------------------------------------------------------------------------
-static ssize_t get_gpio_tx_callback(struct device* dev, struct device_attribute* attr,char* buf, size_t count)
+static ssize_t get_gpio_tx_callback(struct device* dev, struct device_attribute* attr,char* buf)
 {
 	return sprintf(buf,"%i\n",GPIO_TX);
 }
 
 //--------------------------------------------------------------------------------------
-static ssize_t get_gpio_rx_callback(struct device* dev, struct device_attribute* attr,char* buf, size_t count)
+static ssize_t get_gpio_rx_callback(struct device* dev, struct device_attribute* attr,char* buf)
 {
 	return sprintf(buf,"%i\n",GPIO_RX);
 }
@@ -240,7 +240,7 @@ static ssize_t set_data_callback(struct device* dev, struct device_attribute* at
 }
 
 //--------------------------------------------------------------------------------------
-static ssize_t get_data_callback(struct device* dev, struct device_attribute* attr,char* buf, size_t count)
+static ssize_t get_data_callback(struct device* dev, struct device_attribute* attr,char* buf)
 {
 	unsigned char tmp[RX_BUFFER_SIZE+1];
 	
@@ -267,7 +267,7 @@ static ssize_t set_loopback_callback(struct device* dev, struct device_attribute
 }
 
 //--------------------------------------------------------------------------------------
-static ssize_t get_loopback_callback(struct device* dev, struct device_attribute* attr,char* buf, size_t count)
+static ssize_t get_loopback_callback(struct device* dev, struct device_attribute* attr,char* buf)
 {
 	return sprintf(buf,"%i\n",LOOPBACK);
 }
@@ -289,7 +289,7 @@ static ssize_t set_baudrate_callback(struct device* dev, struct device_attribute
 }
 
 //--------------------------------------------------------------------------------------
-static ssize_t get_baudrate_callback(struct device* dev, struct device_attribute* attr,char* buf, size_t count)
+static ssize_t get_baudrate_callback(struct device* dev, struct device_attribute* attr,char* buf)
 {
 	return sprintf(buf,"%i\n",BAUDRATE);
 }
